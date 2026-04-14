@@ -12,6 +12,7 @@ export default function Register() {
 
   const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
 
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -20,6 +21,8 @@ export default function Register() {
       return;
     }
     setLoading(true);
+
+    //successfully register the user and log them in immediately after registration, then navigate to dashboard
     try {
       await register(form);
       toast.success('Account created! Welcome to TaskMaster!');

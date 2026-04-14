@@ -9,6 +9,10 @@ export const AuthProvider = ({ children }) => {
     return saved ? JSON.parse(saved) : null;
   });
 
+
+
+  //login function to authenticate user and store token and user data in localStorage
+  //  for session persistence
   const login = useCallback(async (username, password) => {
     const response = await authApi.login({ username, password });
     const { token, ...userData } = response.data;
@@ -18,6 +22,8 @@ export const AuthProvider = ({ children }) => {
     return userData;
   }, []);
 
+
+  //Register function to create a new user account and log them in immediately after successful registration
   const register = useCallback(async (formData) => {
     const response = await authApi.register(formData);
     const { token, ...userData } = response.data;
